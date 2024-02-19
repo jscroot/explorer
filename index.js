@@ -29,6 +29,8 @@ function cookieKeyAPI(){
     }else{
         keycookie=hashdata;
     }
+    console.log("keycookie:");
+    console.log(keycookie);
     return keycookie;
 }
 
@@ -37,8 +39,6 @@ function runMain(){
     navDir();
     setInner(idList,loading);
     let jsoncookie=getCookie(cookieKeyAPI());
-    console.log("jsoncookie:");
-    console.log(jsoncookie);
     if (jsoncookie===""){
         let url = apiURL+getHash();
         get(url,renderHTML);
