@@ -2,6 +2,7 @@ import {get} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
 import {setInner,addChild,hide } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getHash,onHashChange} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 import {loading} from "https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.1/croot.js";
+import {getCookie,setCookieWithExpireHour} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
 
 //edit this config section
@@ -51,6 +52,7 @@ function renderHTML(result){
             text: "Mohon tunggu 1 jam lagi untuk mengakses, atau ganti koneksi internet anda."
           });
     }else{
+        setCookieWithExpireHour(getHash(),result,1);
         result.forEach(isiRow);
         hide("loading");
     }
