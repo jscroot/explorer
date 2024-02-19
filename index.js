@@ -23,12 +23,13 @@ runMain();
 
 function cookieKeyAPI(){
     let hashdata=getHash();
-    console.log(hashdata);
-    if (hashdata==="undefined"){
-        return "rootfolder";
+    let keycookie="root";
+    if (hashdata===""){
+        keycookie="rootfolder";
     }else{
-        return hashdata
+        keycookie=hashdata;
     }
+    return keycookie;
 }
 
 function runMain(){
@@ -36,6 +37,8 @@ function runMain(){
     navDir();
     setInner(idList,loading);
     let jsoncookie=getCookie(cookieKeyAPI());
+    console.log("jsoncookie:");
+    console.log(jsoncookie);
     if (jsoncookie===""){
         let url = apiURL+getHash();
         get(url,renderHTML);
