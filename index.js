@@ -23,6 +23,7 @@ runMain();
 
 function cookieKeyAPI(){
     let hashdata=getHash();
+    console.log(hashdata);
     if (hashdata==="undefined"){
         return "rootfolder";
     }else{
