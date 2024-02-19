@@ -1,5 +1,5 @@
 import {get} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
-import {setInner,addChild,hide,renderHTML } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
+import {setInner,addChild,hide } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getHash,onHashChange} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 
 
@@ -35,7 +35,7 @@ function keyAPI(){
 function runMain(){
     setInner(idCurrentDir,"<a href='#'><box-icon name='folder-open' ></box-icon></a>");
     navDir();
-    renderHTML(idList,"https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.2/svg/3.svg");
+    setInner(idList,"https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.2/svg/3.svg");
     let jsonstorage=sessionStorage.getItem(keyAPI());
     if (jsonstorage){
         let contentfolder = JSON.parse(jsonstorage);
@@ -43,7 +43,7 @@ function runMain(){
         hide("loading");
     }else{
         let url = apiURL+getHash();
-        get(url,setHTML);
+        get(url,renderHTML);
     }
     
 }
@@ -62,7 +62,7 @@ function navDir(){
 
 }
 
-function setHTML(result){
+function renderHTML(result){
     console.log(result);
     if (("message" in result)&&("documentation_url" in result)){
         Swal.fire({
