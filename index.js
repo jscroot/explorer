@@ -21,12 +21,29 @@ setInner("title",title);
 onHashChange(runMain);
 runMain();
 
+function cookieKeyAPI(){
+    let hashdata=getHash();
+    if (hashdata===""){
+        return "rootfolder";
+    }else{
+        return hashdata
+    }
+}
+
 function runMain(){
     setInner(idCurrentDir,"<a href='#'><box-icon name='folder-open' ></box-icon></a>");
     navDir();
     setInner(idList,loading);
-    let url = apiURL+getHash();
-    get(url,renderHTML);
+    let jsoncookie=getCookie(cookieKeyAPI());
+    if (jsoncookie===""){
+        let url = apiURL+getHash();
+        get(url,renderHTML);
+    }else{
+        let contentfolder = JSON.parse(getCookie(cookieKeyAPI()));
+        contentfolder.forEach(isiRow);
+        hide("loading");
+    }
+    
 }
 
 function navDir(){
@@ -52,7 +69,7 @@ function renderHTML(result){
             text: "Mohon tunggu 1 jam lagi untuk mengakses, atau ganti koneksi internet anda."
           });
     }else{
-        setCookieWithExpireHour(getHash(),JSON.stringify([result]),1);
+        setCookieWithExpireHour(cookieKeyAPI(),JSON.stringify([result]),1);
         result.forEach(isiRow);
         hide("loading");
     }
