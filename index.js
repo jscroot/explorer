@@ -69,7 +69,7 @@ function renderHTML(result){
             text: "Mohon tunggu 1 jam lagi untuk mengakses, atau ganti koneksi internet anda."
           });
     }else{
-        setCookieWithExpireHour(cookieKeyAPI(),JSON.stringify([result]),1);
+        setCookieWithExpireHour(cookieKeyAPI(),JSON.stringify(result),1);
         result.forEach(isiRow);
         hide("loading");
     }
