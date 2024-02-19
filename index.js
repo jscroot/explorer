@@ -68,7 +68,7 @@ function renderHTML(result){
     if (("message" in result)&&("documentation_url" in result)){
         Swal.fire({
             icon: "error",
-            title: "Terdeteksi Spam",
+            title: "Akses Terbatas",
             text: "Mohon tunggu 1 jam lagi untuk mengakses, atau ganti koneksi internet anda."
           });
     }else{
