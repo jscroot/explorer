@@ -25,7 +25,7 @@ function cookieKeyAPI(){
     let hashdata=getHash();
     let keycookie="root";
     if (hashdata===""){
-        keycookie="rootfolder";
+        keycookie="topfolder";
     }else{
         keycookie=hashdata;
     }
