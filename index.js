@@ -4,9 +4,11 @@ import {getHash,onHashChange} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.
 import {loading} from "https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.1/croot.js";
 
 
-const title = "Repositori Surat Keputusan";
-const repoOrg = "repoulbi";
-const urlPDFViewer = "https://repo.ulbi.ac.id/view/#";
+//edit this config section
+const title = "JSCroot Explorer"; //judul website explorer
+const repoOrg = "jscroot"; //nama organisasi repo
+const urlPDFViewer = "https://repo.ulbi.ac.id/view/#"; //web pdf viewer
+//end of config section
 
 const repoPathName = window.location.pathname;
 const apiURL="https://api.github.com/repos/"+repoOrg+""+repoPathName+"contents/";
