@@ -1,6 +1,7 @@
 import {get} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
 import {setInner,addChild,hide } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getHash,onHashChange} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
+import {loading} from "https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.1/croot.js";
 
 
 //edit this config section
@@ -35,7 +36,7 @@ function keyAPI(){
 function runMain(){
     setInner(idCurrentDir,"<a href='#'><box-icon name='folder-open' ></box-icon></a>");
     navDir();
-    setInner(idList,"https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.2/svg/3.svg");
+    setInner(idList,loading);
     let jsonstorage=sessionStorage.getItem(keyAPI());
     if (jsonstorage){
         let contentfolder = JSON.parse(jsonstorage);
