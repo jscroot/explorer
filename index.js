@@ -43,7 +43,7 @@ function runMain(){
         hide("loading");
     }else{
         let url = apiURL+getHash();
-        get(url,renderHTML);
+        get(url,setHTML);
     }
     
 }
@@ -62,7 +62,7 @@ function navDir(){
 
 }
 
-function renderHTML(result){
+function setHTML(result){
     console.log(result);
     if (("message" in result)&&("documentation_url" in result)){
         Swal.fire({
