@@ -37,9 +37,9 @@ function runMain(){
     setInner(idCurrentDir,"<a href='#'><box-icon name='folder-open' ></box-icon></a>");
     navDir();
     setInner(idList,loading);
-    let jsoncookie=sessionStorage.getItem(keyAPI());
-    if (jsoncookie){
-        let contentfolder = JSON.parse(jsoncookie);
+    let jsonstorage=sessionStorage.getItem(keyAPI());
+    if (jsonstorage){
+        let contentfolder = JSON.parse(jsonstorage);
         contentfolder.forEach(isiRow);
         hide("loading");
     }else{
