@@ -2,7 +2,6 @@ import {get} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.6/croot.js";
 import {setInner,addChild,hide } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getHash,onHashChange} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 import {loading} from "https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.1/croot.js";
-import {getCookie,setCookieWithExpireHour} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
 
 //edit this config section
@@ -21,31 +20,31 @@ setInner("title",title);
 onHashChange(runMain);
 runMain();
 
-function cookieKeyAPI(){
+function keyAPI(){
     let hashdata=getHash();
-    let keycookie="root";
+    let keyapi="root";
     if (hashdata===""){
-        keycookie="topfolder";
+        keyapi="topfolder";
     }else{
-        keycookie=hashdata;
+        keyapi=hashdata;
     }
-    console.log("keycookie:");
-    console.log(keycookie);
-    return keycookie;
+    console.log("key:");
+    console.log(keyapi);
+    return keyapi;
 }
 
 function runMain(){
     setInner(idCurrentDir,"<a href='#'><box-icon name='folder-open' ></box-icon></a>");
     navDir();
     setInner(idList,loading);
-    let jsoncookie=getCookie(cookieKeyAPI());
-    if (jsoncookie===""){
-        let url = apiURL+getHash();
-        get(url,renderHTML);
-    }else{
-        let contentfolder = JSON.parse(getCookie(cookieKeyAPI()));
+    let jsoncookie=sessionStorage.getItem(keyAPI());
+    if (jsoncookie){
+        let contentfolder = JSON.parse(jsoncookie);
         contentfolder.forEach(isiRow);
         hide("loading");
+    }else{
+        let url = apiURL+getHash();
+        get(url,renderHTML);
     }
     
 }
@@ -73,7 +72,7 @@ function renderHTML(result){
             text: "Mohon tunggu 1 jam lagi untuk mengakses, atau ganti koneksi internet anda."
           });
     }else{
-        setCookieWithExpireHour(cookieKeyAPI(),JSON.stringify(result),1);
+        sessionStorage.setItem(keyAPI(), JSON.stringify(result));
         result.forEach(isiRow);
         hide("loading");
     }
