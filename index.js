@@ -7,7 +7,7 @@ import {loading} from "https://cdn.jsdelivr.net/gh/jscroot/loading@0.0.1/croot.j
 //edit this config section
 const title = "JSCroot Explorer"; //judul website explorer
 const repoOrg = "jscroot"; //nama organisasi repo
-const urlPDFViewer = "https://repo.ulbi.ac.id/view/#"; //web pdf viewer
+const urlPDFViewer = "https://jscroot.github.io/view/#"; //web pdf viewer with same organization domain
 //end of config section
 
 const repoPathName = window.location.pathname;
